@@ -1,0 +1,35 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: blogmedia
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+  api:
+    build: ./api
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - "./api:/api"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - "3001:3000"
+    environment:
+      DB_USER: root
+      DB_NAME: blogmedia
+      DB_PASSWORD: password
+      DB_HOST: mysql
+  ui:
+    build: ./frontend
+    command: npm run start
+    ports:
+      - "4200:4200"
+    volumes:
+      - "./frontend:/ui"
