@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'ui',
+    modulePrefix: 'tr',
     environment,
     rootURL: '/',
     locationType: 'auto',
