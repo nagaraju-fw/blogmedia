@@ -6,4 +6,10 @@ export default class UiModalComponent extends Component {
   closeModal() {
     this.args.onCloseModal();
   }
+
+  @action
+  preventModalClose(evt) {
+    evt.preventDefault();
+    evt.stopImmediatePropagation();
+  }
 }

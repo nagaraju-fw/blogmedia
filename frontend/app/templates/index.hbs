@@ -1,6 +1,9 @@
 {{page-title 'TechReader'}}
-{{!-- template-lint-disable no-action --}}
-<Common::Header @userIsLoggedIn={{true}} @onNavAction={{action 'openModal'}} />
+{{! template-lint-disable no-action }}
+<Common::Header
+  @userIsLoggedIn={{this.userIsLoggedIn}}
+  @onNavAction={{action 'openModal'}}
+/>
 <section>
   {{! list of topics available }}
 </section>
@@ -9,14 +12,14 @@
   {{! copyright }}
 </footer>
 
-{{this.showModal}}
-
 {{#if this.showModal}}
   {{#if this.modalType}}
-    <Ui::Modal @title="Modal" @onCloseModal={{action 'closeModal'}}>
-
-        Based on modal type show login or register
-
+    <Ui::Modal @title='Modal' @onCloseModal={{action 'closeModal'}}>
+      {{#if this.userIsLoggedIn}}
+        <Common::Login/>
+      {{else}}
+        <Common::Register/>
+      {{/if}}
     </Ui::Modal>
   {{/if}}
 {{/if}}

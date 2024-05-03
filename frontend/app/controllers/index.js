@@ -6,6 +6,8 @@ export default class IndexController extends Controller {
   @tracked modalType = null;
   @tracked showModal = false;
 
+  userIsLoggedIn = false;
+
   @action
   openModal(type) {
     this.showModal = true;
