@@ -1,0 +1,31 @@
+<header>
+  <div class='content-wrapper'>
+    <a id='tr-logo' href='/' title='Tech Reader, blogs for tech'>Tech Reader</a>
+    <nav>
+      <ul>
+        {{#if @userIsLoggedIn}}
+          <li>
+            <button
+              type='button'
+              class='profile-btn btn btn-flat'
+              {{on 'click' (fn this.onNavAction 'profile')}}
+            >
+              <span class='material-symbols-outlined'>account_circle</span>
+            </button>
+          </li>
+        {{else}}
+          <li>
+            <button
+              type='button'
+              class='login-btn btn btn-flat'
+              {{on 'click' (fn this.onNavAction 'login')}}
+            >
+              Login/Register
+            </button>
+          </li>
+        {{/if}}
+      </ul>
+    </nav>
+  </div>
+</header>
+{{yield}}

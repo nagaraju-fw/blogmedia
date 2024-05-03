@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+html, body {
+  height: 100vh;
+  font: 16px Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #101010;
+}
+
+.content-wrapper {
+  width: 1200px;
+  margin: 0px auto;
+}
+
+.material-symbols-outlined {
+  color: #565656;
+  cursor: pointer;
+  font-size: 24px;
+
+  &:hover {
+    color: #101010;
+  }
+}
+
+.btn.btn-flat {
+  border: none;
+  background: none;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.modal-header {
+  min-height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  border-bottom: 1px solid #d9d9d9;
+  box-shadow: 0px 0px 2px #bbb;
+}
+
+.modal-footer {
+  padding: 10px;
+}
+
+.modal-content {
+  padding: 10px;
+}
+
+
+header {
+  height: 75px;
+  padding: 0px 50px;
+  border-bottom: 1px solid #d9d9d9;
+  box-shadow: 0px -2px 5px #bbb;
+}
+
+header .content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+header nav ul li {
+  margin: 20px;
+  .profile-btn {
+    height: 32px;
+    font-size: 32px;
+  }
+}
+
+#tr-logo {
+  color: #303030;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}

@@ -1,27 +1,22 @@
 {{page-title 'TechReader'}}
-<header>
-  <a href='#' title='Tech Reader, blogs for tech'>Tech Reader</a>
-  <nav>
-    <ul>
-      <li>Profile</li>
-      <li>Login/Register</li>
-    </ul>
-  </nav>
-</header>
+{{!-- template-lint-disable no-action --}}
+<Common::Header @userIsLoggedIn={{true}} @onNavAction={{action 'openModal'}} />
 <section>
   {{! list of topics available }}
 </section>
-<main>
-  <section>
-    {{!-- Main posts / user posts --}}
-  </section>
-  <aside>
-    {{!-- Reading list --}}
-    {{!-- people following & followers --}}
-  </aside>
-</main>
+{{outlet}}
 <footer>
-  {{!-- copyright --}}
+  {{! copyright }}
 </footer>
 
-{{outlet}}
+{{this.showModal}}
+
+{{#if this.showModal}}
+  {{#if this.modalType}}
+    <Ui::Modal @title="Modal" @onCloseModal={{action 'closeModal'}}>
+
+        Based on modal type show login or register
+
+    </Ui::Modal>
+  {{/if}}
+{{/if}}

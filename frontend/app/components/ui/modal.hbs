@@ -1,0 +1,19 @@
+<div class="modal-wrapper">
+  <div class="modal">
+    <div class="modal-header">
+      <span>{{@title}}</span>
+      <button
+              type='button'
+              class='btn btn-flat'
+              {{on 'click' this.closeModal}}
+            >
+              <span class='material-symbols-outlined'>close</span>
+            </button>
+    </div>
+    <div class="modal-content">
+      {{yield}}
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+
+</div>
