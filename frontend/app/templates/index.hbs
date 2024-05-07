@@ -14,12 +14,12 @@
 
 {{#if this.showModal}}
   {{#if this.modalType}}
-    <Ui::Modal @title='Modal' @onCloseModal={{action 'closeModal'}}>
-      {{#if this.userIsLoggedIn}}
-        <Common::Login/>
+    <Ui::Modal @title='Login' @onCloseModal={{action 'closeModal'}}>
+      {{!-- {{#if this.userIsLoggedIn}}
       {{else}}
         <Common::Register/>
-      {{/if}}
+      {{/if}} --}}
+      <Common::Login/>
     </Ui::Modal>
   {{/if}}
 {{/if}}
