@@ -5,10 +5,7 @@
       <ul>
         {{#if @userIsLoggedIn}}
           <li>
-            <button
-              type='button'
-              class='profile-btn btn btn-flat'
-            >
+            <button type='button' class='profile-btn btn btn-flat'>
               <span class='material-symbols-outlined'>account_circle</span>
             </button>
           </li>
@@ -16,10 +13,10 @@
           <li>
             <button
               type='button'
-              class='login-btn btn btn-flat'
+              class='get-started-btn btn btn-flat'
               {{on 'click' (fn this.onNavAction 'login')}}
             >
-              Login/Register
+              Get Started
             </button>
           </li>
         {{/if}}
