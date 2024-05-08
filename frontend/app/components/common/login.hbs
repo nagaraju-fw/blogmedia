@@ -1,1 +1,32 @@
-Login Component
+{{#if this.errorMessage}}
+  <div id='login-error'>{{this.errorMessage}}</div>
+{{/if}}
+
+<form {{on 'submit' this.save}} action='#' class='tr-form form-fit login-form'>
+  <Input
+    id='login-email'
+    name='email'
+    placeholder='Enter Email'
+    @type='email'
+    @value={{this.loginData.email}}
+    required
+  />
+
+  <Input
+    id='login-password'
+    name='password'
+    placeholder='Enter Password'
+    @type='password'
+    @value={{this.loginData.password}}
+    required
+  />
+
+  <div class='form-action'>
+    <button
+      type='button'
+      {{on 'click' this.reset}}
+      class='btn btn-action'
+    >Reset</button>
+    <button type='submit' class='btn btn-primary'>Submit</button>
+  </div>
+</form>

@@ -20,6 +20,8 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      BASE_API_URL: 'http://localhost:3001',
+      LOGIN_URL: '/auth/login',
     },
   };
 

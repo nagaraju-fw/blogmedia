@@ -15,11 +15,7 @@
 {{#if this.showModal}}
   {{#if this.modalType}}
     <Ui::Modal @title='Login' @onCloseModal={{action 'closeModal'}}>
-      {{!-- {{#if this.userIsLoggedIn}}
-      {{else}}
-        <Common::Register/>
-      {{/if}} --}}
-      <Common::Login/>
+      <Common::Login @onLoginSuccess={{action 'closeModal'}}/>
     </Ui::Modal>
   {{/if}}
 {{/if}}
