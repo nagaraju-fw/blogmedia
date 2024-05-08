@@ -1,0 +1,25 @@
+<div class='form-field password-with-help {{if this.isPasswordValid '' 'error'}}'>
+  <Input
+    id='input-password'
+    name='password'
+    placeholder='Enter Password'
+    @type='password'
+    @value={{this.password}}
+    required
+  />
+  <p class='form-input-error'>{{this.errors.password}}</p>
+  <Common::PasswordChecker::ValidatorList @id='password' @password={{this.password}} @onPasswordValid={{action 'setFormStatus'}}/>
+</div>
+
+<div class='form-field password-with-help {{if this.isConfirmPasswordValid '' 'error'}}'>
+  <Input
+    id='input-confirm-password'
+    name='confirm-password'
+    placeholder='Re-enter Password'
+    @type='password'
+    @value={{this.confirmPassword}}
+    required
+  />
+  <p class='form-input-error'>{{this.errors.confirmPassword}}</p>
+  <Common::PasswordChecker::ValidatorList @password={{this.confirmPassword}}/>
+</div>

@@ -100,71 +100,13 @@ header nav ul li {
   padding: 10px;
 }
 
-.tr-form label {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #101010;
-}
-
-.tr-form input {
-  font-size: 1rem;
-  line-height: 3.5rem;
-  border: 1px solid #d3d3d3;
-  border-radius: 4px;
-}
-
-.tr-form.form-fit input {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0px 10px;
-  margin-bottom: 20px;
-}
-
-.btn {
-  border: none;
-  font-size: 1rem;
-  line-height: 2.4rem;
-  min-width: 100px;
-  padding: 0px 10px;
-  margin: 0px 0px 0px 10px;
-  border-radius: 4px;
-}
-
-.btn.btn-icon,
-.btn.btn-flat {
-  border: none;
-  border-radius: 0;
-  background: none;
-  font-size: 1rem;
-  min-width: auto;
-  line-height: 1;
-  margin: 0;
-  padding: 0;
-}
-
-.btn.btn-primary {
-  background-color: #337dbb;
-  color: #fff;
-  &:hover {
-    background-color: #266090;
-  }
-}
-
-.btn.btn-action {
-  background-color: #efefef;
-  &:hover {
-    background-color: #d3d3d3;
-  }
-}
-
 .get-started-btn {
   text-decoration: underline;
   cursor: pointer;
 }
 
-
-.login-form {
+.login-form,
+.register-form  {
   width: 350px;
   padding: 10px;
 

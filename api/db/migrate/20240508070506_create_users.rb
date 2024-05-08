@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :username, limit: 32
       t.string :email, limit: 32
       t.date :dob
-      t.integer :gender
+      t.string :gender
       t.string :password_digest
 
       t.timestamps

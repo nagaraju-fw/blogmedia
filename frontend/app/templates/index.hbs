@@ -14,8 +14,9 @@
 
 {{#if this.showModal}}
   {{#if this.modalType}}
-    <Ui::Modal @title='Login' @onCloseModal={{action 'closeModal'}}>
-      <Common::Login @onLoginSuccess={{action 'closeModal'}}/>
+    <Ui::Modal @title='Signup' @onCloseModal={{action 'closeModal'}}>
+      <Common::Register @onRegisterDone={{action 'closeModal'}}/>
+      {{!-- <Common::Login @onLoginSuccess={{action 'closeModal'}}/> --}}
     </Ui::Modal>
   {{/if}}
 {{/if}}

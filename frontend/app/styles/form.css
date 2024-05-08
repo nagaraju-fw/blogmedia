@@ -1,0 +1,100 @@
+
+.tr-form label {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #101010;
+}
+
+.tr-form input,
+.tr-form select  {
+  font-size: 1rem;
+  line-height: 3rem;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+}
+
+.tr-form.form-fit input,
+.tr-form.form-fit select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  margin-bottom: 20px;
+}
+
+.tr-form select {
+  height: 3rem;
+}
+
+.tr-form .password-with-help {
+  position: relative;
+  &.error {
+    &:hover .password-checker-result {
+      display: block;
+    }
+    input {
+      padding-right: 35px;
+    }
+    .material-symbols-outlined {
+      display: block;
+      color: red;
+    }
+  }
+}
+
+.btn {
+  border: none;
+  font-size: 1rem;
+  line-height: 2.4rem;
+  min-width: 100px;
+  padding: 0px 10px;
+  margin: 0px 0px 0px 10px;
+  border-radius: 4px;
+}
+
+.btn.btn-icon,
+.btn.btn-flat {
+  border: none;
+  border-radius: 0;
+  background: none;
+  font-size: 1rem;
+  min-width: auto;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.btn.btn-primary {
+  background-color: #337dbb;
+  color: #fff;
+  &:hover {
+    background-color: #266090;
+  }
+}
+
+.btn.btn-action {
+  background-color: #efefef;
+  &:hover {
+    background-color: #d3d3d3;
+  }
+}
+
+.password-checker-result {
+  display: none;
+  width: 200px;
+  height: auto;
+  position: absolute;
+  right: -230px;
+  top: 10px;
+  z-index: 1;
+  border: 1px solid #bbb;
+  padding: 10px;
+  background: #fff;
+}
+
+.password-checker-result .list-item {
+  line-height: 1.2rem;
+}
+.password-checker-result .list-item.password-invalid {
+  color: red;
+}

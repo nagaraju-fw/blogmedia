@@ -1,0 +1,75 @@
+{{#if this.errorMessage}}
+  <div id='register-error'>{{this.errorMessage}}</div>
+{{/if}}
+
+<form
+  {{on 'submit' this.save}}
+  action='#'
+  class='tr-form form-fit register-form'
+>
+  <div class='form-field'>
+    <Input
+      id='register-name'
+      name='name'
+      placeholder='Enter FullName'
+      @type='text'
+      @value={{this.register.name}}
+      required
+    />
+  </div>
+  <div class='form-field'>
+    <Input
+      id='register-username'
+      name='username'
+      placeholder='Enter Username'
+      @type='text'
+      @value={{this.register.username}}
+      required
+    />
+  </div>
+  <div class='form-field'>
+    <Input
+      id='register-email'
+      name='email'
+      placeholder='Enter Email'
+      @type='email'
+      @value={{this.register.email}}
+      required
+    />
+  </div>
+  <Common::PasswordChecker />
+  <div class='form-field'>
+    <Input
+      id='register-dob'
+      name='dob'
+      placeholder='Enter DOB'
+      @type='date'
+      @value={{this.register.dob}}
+      required
+    />
+  </div>
+
+  <select
+    id='register-gender'
+    name='gender'
+    placeholder='Choose Gender'
+    value={{this.register.gender}}
+    required
+  >
+
+    <option value=''>Select Gender</option>
+    {{#each this.genderOptions as |gender|}}
+      <option value={{gender.id}}>{{gender.value}}</option>
+    {{/each}}
+
+  </select>
+
+  <div class='form-action'>
+    <button
+      type='button'
+      {{on 'click' this.reset}}
+      class='btn btn-action'
+    >Reset</button>
+    <button type='submit' class='btn btn-primary'>Submit</button>
+  </div>
+</form>
