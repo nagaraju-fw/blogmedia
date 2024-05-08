@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: blogmedia
+      MYSQL_DATABASE: freshblogs
       MYSQL_USER: appuser
       MYSQL_PASSWORD: password
     ports:
@@ -23,7 +23,7 @@ services:
       - "3001:3000"
     environment:
       DB_USER: root
-      DB_NAME: blogmedia
+      DB_NAME: freshblogs
       DB_PASSWORD: password
       DB_HOST: mysql
   ui:
