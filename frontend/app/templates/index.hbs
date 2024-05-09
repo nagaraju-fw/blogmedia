@@ -13,10 +13,27 @@
 </footer>
 
 {{#if this.showModal}}
-  {{#if this.modalType}}
-    <Ui::Modal @title='Signup' @onCloseModal={{action 'closeModal'}}>
-      <Common::Register @onRegisterDone={{action 'closeModal'}}/>
-      {{!-- <Common::Login @onLoginSuccess={{action 'closeModal'}}/> --}}
-    </Ui::Modal>
-  {{/if}}
+  <Ui::Modal @title='Join Freshblogs' @onCloseModal={{action 'closeModal'}}>
+    {{#if this.showLoginForm}}
+      <Common::Login @onLoginSuccess={{action 'closeModal'}} />
+      <p class="tr-account-status">
+        <span>No Account?</span>
+        <button
+          type='button'
+          class='btn btn-flat modal-link'
+          {{on 'click' (fn this.setAction false)}}
+        >Create One</button>
+      </p>
+    {{else}}
+      <Common::Register @onRegisterDone={{action 'closeModal'}} />
+      <p class="tr-account-status">
+        <span>Already have an account?</span>
+        <button
+          type='button'
+          class='btn btn-flat modal-link'
+          {{on 'click' (fn this.setAction true)}}
+        >Sign In</button>
+      </p>
+    {{/if}}
+  </Ui::Modal>
 {{/if}}

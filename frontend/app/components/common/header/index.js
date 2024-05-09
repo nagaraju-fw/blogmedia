@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 
 export default class CommonHeaderComponent extends Component {
   @action
-  onNavAction(type) {
-    this.args.onNavAction(type);
+  onNavAction() {
+    this.args.onNavAction();
   }
 }

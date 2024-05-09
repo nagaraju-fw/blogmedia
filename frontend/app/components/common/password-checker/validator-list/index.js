@@ -3,10 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class PasswordCheckerComponent extends Component {
-  @tracked errors = {
-    password: '',
-    confirmPassword: '',
-  };
+  @tracked password;
 
   @tracked password_validation_list = [
     { regex: /.{8,}/, text: 'Minimum 8 character long', valid: false },

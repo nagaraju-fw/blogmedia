@@ -1,3 +1,23 @@
+:root {
+  --white-50: #ffffff;
+  --white-100: #efefef;
+  --white-200: #dcdcdc;
+  --white-300: #bdbdbd;
+  --white-400: #989898;
+  --white-500: #7c7c7c;
+  --white-600: #656565;
+  --white-700: #525252;
+  --white-800: #464646;
+  --white-900: #3d3d3d;
+  --white-950: #292929;
+
+  --primary-color: var(--white-50);
+  --secondary-color: #4ecaf4;
+  --secondary-color-dark: #267995;
+  --tertiary-color: #ff5b5b;
+  --text-primary-color: var(--white-950);
+}
+
 
 * {
   padding: 0;
@@ -9,30 +29,31 @@
 html, body {
   height: 100vh;
   font: 14px Arial, Helvetica, sans-serif;
-  background-color: #ffffff;
-  color: #101010;
+  line-height: 1.2rem;
+  background-color: var(--white-50);
+  color: var(--text-primary-color);
 }
 
 .content-wrapper {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0px auto;
 }
 
 .material-symbols-outlined {
-  color: #414141;
+  color: var(--white-800);
   cursor: pointer;
   font-size: 2rem;
 
   &:hover {
-    color: #005e86;
+    color: var(--text-primary-color);
   }
 }
 
 header {
   height: 75px;
   padding: 0px 50px;
-  border-bottom: 1px solid #d9d9d9;
-  box-shadow: 0px -2px 5px #bbb;
+  border-bottom: 1px solid var(--white-200);
+  box-shadow: 0px -2px 5px var(--white-100);
 }
 
 header .content-wrapper {
@@ -63,15 +84,15 @@ header nav ul li {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgba(41,41,41,0.25);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal {
-  background: #fff;
-  border: 1px solid #bbb;
+  background: var(--white-50);
+  border: 1px solid var(--white-200);
   border-radius: 4px;
 }
 
@@ -108,7 +129,7 @@ header nav ul li {
 .login-form,
 .register-form  {
   width: 350px;
-  padding: 10px;
+  margin: 0px auto;
 
   .form-action {
     display: flex;
@@ -121,8 +142,25 @@ header nav ul li {
 }
 
 #tr-logo {
-  color: #303030;
+  color: var(--text-primary-color);
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+#account-modal {
+  min-width: 400px;
+}
+
+.tr-account-status {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.modal-link {
+  cursor: pointer;
+  color: var(--secondary-color);
+  &:hover {
+    color: var(--secondary-color-dark);
+  }
 }

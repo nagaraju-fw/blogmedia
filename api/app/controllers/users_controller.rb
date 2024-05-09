@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :authorize, except: [:create, :checkUserNameExists]
 
   def checkUserNameExists
-    username = User.find(params[:username])
+    username = User.where("username = ?", params[:username]).first
     if username
-      render json: { error: 'Username already exists' }
+      render json: { error: 'Username already exists', exists: true }
     else
-      render json: { message: 'Username available' }
+      render json: { error: 'Username available', exists: false }
     end
   end
 
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       token = JWT.encode({user_id: user.id}, ENV['APP_SECRET_KEY'], 'HS256')
       render json: {user: user, token: token}
     else
-        render json: {errors: user.error.full_messages}
+        render json: {errors: user.errors.full_messages}
     end
   end
 
@@ -32,14 +32,43 @@ class UsersController < ApplicationController
     render json: user
   end
 
-
   def delete
     user = User.find(params[:id])
     user.destroy
   end
 
+  def current
+    header = request.headers['Authorization']
+    if header
+      token = header.split(' ').last
+      begin
+        token = JWT.decode(token, ENV['APP_SECRET_KEY'], true, {algorithm: 'HS256'})
+        user = User.find(token[0]['user_id'])
+        render json: {user: user}
+      rescue JWT::DecodeError
+        render json: {error: 'UnAuthorized', status: :unauthorized}
+      end
+    end
+  end
+
   private
+
   def user_params
-    params.require(:user).permit(:name, :username, :email, :dob, :gender, :password_digest)
+    params.require(:user).permit(:name, :username, :email, :dob, :gender, :password)
+  end
+
+  def authorize
+    header = request.headers['Authorization']
+    if header
+        token = header.split(' ').last
+        begin
+            token = JWT.decode(token, ENV['APP_SECRET_KEY'], true, {algorithm: 'HS256'})
+            user = User.find(token[0]['user_id'])
+        rescue JWT::DecodeError
+            render json: {error: 'UnAuthorized', status: :unauthorized}
+        end
+    else
+        render json: {error: 'UnAuthorized', status: :unauthorized}
+    end
   end
 end

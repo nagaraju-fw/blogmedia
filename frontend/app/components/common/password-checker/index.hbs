@@ -1,25 +1,40 @@
-<div class='form-field password-with-help {{if this.isPasswordValid '' 'error'}}'>
+<div
+  class='form-field password-with-help
+    {{if this.formObj.password.error "error" ""}}'
+>
   <Input
     id='input-password'
     name='password'
     placeholder='Enter Password'
     @type='password'
-    @value={{this.password}}
     required
+    {{on 'keyup' this.updatePassword}}
   />
-  <p class='form-input-error'>{{this.errors.password}}</p>
-  <Common::PasswordChecker::ValidatorList @id='password' @password={{this.password}} @onPasswordValid={{action 'setFormStatus'}}/>
+  {{! template-lint-disable no-action }}
+  <Common::PasswordChecker::ValidatorList
+    @id='password'
+    @password={{this.formObj.password.value}}
+    @onPasswordValid={{action 'setFormStatus'}}
+  />
 </div>
 
-<div class='form-field password-with-help {{if this.isConfirmPasswordValid '' 'error'}}'>
+{{this.formObj.confirmPassword.error}}
+<div
+  class='form-field password-with-help
+    {{if this.formObj.confirmPassword.error "error" ""}}'
+>
   <Input
     id='input-confirm-password'
-    name='confirm-password'
+    name='confirmPassword'
     placeholder='Re-enter Password'
     @type='password'
-    @value={{this.confirmPassword}}
     required
+    {{on 'keyup' this.updatePassword}}
   />
-  <p class='form-input-error'>{{this.errors.confirmPassword}}</p>
-  <Common::PasswordChecker::ValidatorList @password={{this.confirmPassword}}/>
+  {{! template-lint-disable no-action }}
+  <Common::PasswordChecker::ValidatorList
+    @id='confirmPassword'
+    @password={{this.formObj.confirmPassword.value}}
+    @onPasswordValid={{action 'setFormStatus'}}
+  />
 </div>

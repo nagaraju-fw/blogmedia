@@ -22,7 +22,7 @@ module.exports = function (environment) {
       // when it is created
       BASE_API_URL: 'http://localhost:3001',
       LOGIN_URL: '/auth/login',
-      REGISTER_URL: '/users',
+      USERS_API_URL: '/users',
     },
   };
 
