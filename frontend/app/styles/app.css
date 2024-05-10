@@ -84,7 +84,7 @@ header nav ul li {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(41,41,41,0.25);
+  background:rgb(189, 189, 189, 0.25);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +92,7 @@ header nav ul li {
 
 .modal {
   background: var(--white-50);
-  border: 1px solid var(--white-200);
+  box-shadow: 0px 0px 18px 3px var(--white-200);
   border-radius: 4px;
 }
 
@@ -144,8 +144,7 @@ header nav ul li {
 #tr-logo {
   color: var(--text-primary-color);
   font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 #account-modal {

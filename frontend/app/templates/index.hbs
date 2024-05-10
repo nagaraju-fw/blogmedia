@@ -1,4 +1,4 @@
-{{page-title 'TechReader'}}
+{{page-title 'FreshBlogs'}}
 {{! template-lint-disable no-action }}
 <Common::Header
   @userIsLoggedIn={{this.userIsLoggedIn}}
@@ -7,7 +7,11 @@
 <section>
   {{! list of topics available }}
 </section>
-{{outlet}}
+
+<main>
+  {{outlet}}
+</main>
+
 <footer>
   {{! copyright }}
 </footer>
@@ -15,8 +19,8 @@
 {{#if this.showModal}}
   <Ui::Modal @title='Join Freshblogs' @onCloseModal={{action 'closeModal'}}>
     {{#if this.showLoginForm}}
-      <Common::Login @onLoginSuccess={{action 'closeModal'}} />
-      <p class="tr-account-status">
+      <Common::Login @onLoginSuccess={{action 'loadUser'}} />
+      <p class='tr-account-status'>
         <span>No Account?</span>
         <button
           type='button'
@@ -25,8 +29,8 @@
         >Create One</button>
       </p>
     {{else}}
-      <Common::Register @onRegisterDone={{action 'closeModal'}} />
-      <p class="tr-account-status">
+      <Common::Register @onRegisterDone={{action 'loadUser'}} />
+      <p class='tr-account-status'>
         <span>Already have an account?</span>
         <button
           type='button'

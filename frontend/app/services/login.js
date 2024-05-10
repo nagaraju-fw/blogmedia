@@ -11,4 +11,14 @@ export default class LoginService extends Service {
       body: JSON.stringify(loginData),
     });
   }
+
+  validate(token) {
+    return fetch(config.APP.BASE_API_URL + '/users/validate', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    });
+  }
 }

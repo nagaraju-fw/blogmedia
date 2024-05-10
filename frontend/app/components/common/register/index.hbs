@@ -1,5 +1,5 @@
 {{#if this.errorMessage}}
-  <div id='register-error'>{{this.errorMessage}}</div>
+  <div class='form-error-message'>{{this.errorMessage}}</div>
 {{/if}}
 
 <form
@@ -16,6 +16,7 @@
       @type='text'
       @value={{this.registerData.name.value}}
       required
+      autocomplete="off"
       {{on 'keyup' (fn this.validateRequiredFields 'name' )}}
     />
     {{!-- <p class='form-error-message'>{{this.registerData.name.error}}</p> --}}
@@ -28,6 +29,7 @@
       @type='text'
       @value={{this.registerData.username.value}}
       required
+      autocomplete="off"
       {{on 'keyup' this.checkUsername}}
     />
     <p class='form-error-message'>{{this.registerData.username.error}}</p>
@@ -40,6 +42,7 @@
       @type='email'
       @value={{this.registerData.email.value}}
       required
+      autocomplete="off"
       {{on 'keyup' (fn this.validateRequiredFields 'email' )}}
     />
     {{!-- <p class='form-error-message'>{{this.registerData.email.error}}</p> --}}
@@ -48,7 +51,7 @@
   <Common::PasswordChecker
     @onPasswordValidate={{action 'checkAndSetPassword'}}
   />
-  {{!-- <p class='form-error-message'>{{this.registerData.password.error}}</p> --}}
+  <p class='form-error-message'>{{this.registerData.password.error}}</p>
 
   <div class='form-field {{if this.registerData.dob.error "error" ""}}'>
     <Input
@@ -58,6 +61,7 @@
       @type='date'
       @value={{this.registerData.dob.value}}
       required
+      autocomplete="off"
       {{on 'keyup' (fn this.validateRequiredFields 'dob' )}}
     />
     {{!-- <p class='form-error-message'>{{this.registerData.dob.error}}</p> --}}
@@ -70,6 +74,7 @@
       placeholder='Choose Gender'
       value={{this.registerData.gender.value}}
       required
+      autocomplete="off"
       {{on 'change' this.updateGender}}
     >
       <option value=''>Select Gender</option>

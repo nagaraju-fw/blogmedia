@@ -1,8 +1,11 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 export default class IndexController extends Controller {
+  @service router;
+
   @tracked showLoginForm = false;
   @tracked showModal = false;
 
@@ -10,11 +13,7 @@ export default class IndexController extends Controller {
 
   constructor() {
     super(...arguments);
-    const sessionCookie = document.cookie
-      .split(';')[0]
-      .replace('__freshblog_session=');
-
-    this.userIsLoggedIn = sessionCookie ? true : false;
+    console.log(this.model);
   }
 
   @action
@@ -25,6 +24,11 @@ export default class IndexController extends Controller {
   @action
   openModal() {
     this.showModal = true;
+  }
+
+  @action
+  loadUser() {
+    this.closeModal();
   }
 
   @action

@@ -5,9 +5,9 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import config from 'ui/config/environment';
 
-export default class CommonLoginComponent extends Component {
+export default class CommonRegisterComponent extends Component {
   @service store;
-  @service('login') loginSvc;
+  @service('auth') auth;
 
   @tracked registerData;
   @tracked errorMessage;
@@ -46,7 +46,7 @@ export default class CommonLoginComponent extends Component {
       username: this.registerData.get('username').value,
       email: this.registerData.get('email').value,
       password: this.registerData.get('password').value,
-      dob: this.registerData.get('dob').value,
+      dob: this.#formatDate(this.registerData.get('dob').value),
       gender: this.registerData.get('gender').value,
     });
     user.save().then((response) => {
@@ -75,6 +75,7 @@ export default class CommonLoginComponent extends Component {
       value: obj.form.password.value,
       error: obj.error,
     });
+    this.setFormValid();
   }
 
   @action
@@ -108,10 +109,6 @@ export default class CommonLoginComponent extends Component {
     this.setFormValid();
   }
 
-  #onRegisterDone() {
-    this.args.onRegisterDone();
-  }
-
   fetchUserName(username) {
     if (username) {
       fetch(this.usersURL + '/checkUserNameExists?username=' + username)
@@ -133,23 +130,37 @@ export default class CommonLoginComponent extends Component {
 
   setFormValid() {
     const isValid = Object.keys(this.registerData).every((field) => {
-      return this.registerData[field].value;
+      return this.registerData[field].value && !this.registerData[field].error;
     });
     this.formInvalid = isValid ? null : true;
   }
 
   async #login(response) {
-    const result = await this.loginSvc
-      .login({
-        email: response.email,
-        password: response.password,
-      })
-      .then((res) => res.json());
-    if (result.user && result.token) {
-      document.cookie = '__freshblog_session=' + result.token;
-      this.#onRegisterDone();
+    const result = await this.auth.login({
+      email: response.email,
+      password: response.password,
+    });
+
+    if (this.auth.currentUser) {
+      this.#onRegisterDone(this.auth.currentUser);
     } else {
-      this.errorMessage = result.error;
+      this.errorMessage = result.error || null;
     }
+  }
+
+  #formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
+  #onRegisterDone(user) {
+    this.args.onRegisterDone(user);
   }
 }
