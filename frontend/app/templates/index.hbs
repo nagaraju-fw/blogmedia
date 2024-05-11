@@ -1,43 +1,15 @@
-{{page-title 'FreshBlogs'}}
-{{! template-lint-disable no-action }}
-<Common::Header
-  @userIsLoggedIn={{this.userIsLoggedIn}}
-  @onNavAction={{action 'openModal'}}
-/>
-<section>
-  {{! list of topics available }}
-</section>
-
+{{page-title 'Home'}}
 <main>
-  {{outlet}}
+  <div class='content-wrapper'>
+    <section>
+      posts
+      {{! Main posts / user posts }}
+    </section>
+    <aside>
+      home
+      {{! Reading list }}
+      {{! people following & followers }}
+    </aside>
+  </div>
 </main>
-
-<footer>
-  {{! copyright }}
-</footer>
-
-{{#if this.showModal}}
-  <Ui::Modal @title='Join Freshblogs' @onCloseModal={{action 'closeModal'}}>
-    {{#if this.showLoginForm}}
-      <Common::Login @onLoginSuccess={{action 'loadUser'}} />
-      <p class='tr-account-status'>
-        <span>No Account?</span>
-        <button
-          type='button'
-          class='btn btn-flat modal-link'
-          {{on 'click' (fn this.setAction false)}}
-        >Create One</button>
-      </p>
-    {{else}}
-      <Common::Register @onRegisterDone={{action 'loadUser'}} />
-      <p class='tr-account-status'>
-        <span>Already have an account?</span>
-        <button
-          type='button'
-          class='btn btn-flat modal-link'
-          {{on 'click' (fn this.setAction true)}}
-        >Sign In</button>
-      </p>
-    {{/if}}
-  </Ui::Modal>
-{{/if}}
+{{outlet}}

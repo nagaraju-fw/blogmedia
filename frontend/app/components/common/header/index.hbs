@@ -3,18 +3,27 @@
     <a id='tr-logo' href='/' title='FreshBlogs, blogs for tech'>FreshBlogs</a>
     <nav>
       <ul>
-        {{#if @userIsLoggedIn}}
-          <li>
-            <button type='button' class='profile-btn btn btn-flat'>
-              <span class='material-symbols-outlined'>account_circle</span>
-            </button>
+        {{#if this.auth.currentUser}}
+          <li class="profile-menu">
+            <span class='material-symbols-outlined'>account_circle</span>
+            <Ui::Popup>
+              <ul role="listbox">
+                <li role="button">Change Password</li>
+                <li {{on 'click' (fn this.onNavAction 'logout')}} role="button">Logout</li>
+              </ul>
+            </Ui::Popup>
           </li>
+          {{!-- <li>
+            <button title="logout" type='button' class='profile-btn btn btn-flat' {{on 'click' (fn this.onNavAction 'logout') }}>
+              <span class='material-symbols-outlined'>logout</span>
+            </button>
+          </li> --}}
         {{else}}
           <li>
             <button
               type='button'
               class='get-started-btn btn btn-flat'
-              {{on 'click' this.onNavAction}}
+              {{on 'click' (fn this.onNavAction 'loginRegister')}}
             >
               Get Started
             </button>

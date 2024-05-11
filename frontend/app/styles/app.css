@@ -40,7 +40,7 @@ html, body {
 }
 
 .material-symbols-outlined {
-  color: var(--white-800);
+  color: var(--white-600);
   cursor: pointer;
   font-size: 2rem;
 
@@ -64,19 +64,19 @@ header .content-wrapper {
   height: 100%;
 }
 
-header nav ul {
+/* header nav ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 
 header nav ul li {
-  margin: 20px;
+  margin: 10px;
   .profile-btn {
     height: 32px;
     font-size: 2rem;
   }
-}
+} */
 
 .modal-wrapper {
   position: fixed;
@@ -162,4 +162,31 @@ header nav ul li {
   &:hover {
     color: var(--secondary-color-dark);
   }
+}
+
+.profile-menu {
+  position: relative;
+}
+.profile-menu:hover .popup {
+  display: block;
+}
+.profile-menu li {
+  padding: 10px;
+  line-height: 1.2rem;
+}
+.profile-menu li:hover {
+  background: var(--white-100);
+  cursor: pointer;
+}
+
+.popup {
+  min-width: 140px;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: var(--primary-color);
+  border: 1px solid var(--white-200);
+  border-radius: 4px;
 }

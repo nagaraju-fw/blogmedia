@@ -1,0 +1,48 @@
+{{page-title 'FreshBlogs'}}
+{{! template-lint-disable no-action }}
+<Common::Header
+  @onLogout={{action 'afterLogout'}}
+  @openModalAction={{action 'openModal'}}
+  @openProfileAction={{action 'openProfileModal'}}
+/>
+<section>
+  {{! list of topics available }}
+</section>
+
+<main>
+  {{outlet}}
+</main>
+
+<footer>
+  {{! copyright }}
+</footer>
+
+{{#if this.showModal}}
+  <Ui::Modal @title={{this.title}} @onCloseModal={{action 'closeModal'}}>
+    {{#if (if-equals this.formType "login")}}
+      <Common::Login @onLoginSuccess={{action 'loadUser'}} />
+      <p class='tr-account-status'>
+        <span>No Account?</span>
+        <button
+          type='button'
+          class='btn btn-flat modal-link'
+          {{on 'click' (fn this.setAction 'register')}}
+        >Create One</button>
+      </p>
+    {{/if}}
+    {{#if (if-equals this.formType "register")}}
+      <Common::Register @onRegisterDone={{action 'loadUser'}} />
+      <p class='tr-account-status'>
+        <span>Already have an account?</span>
+        <button
+          type='button'
+          class='btn btn-flat modal-link'
+          {{on 'click' (fn this.setAction 'login')}}
+        >Sign In</button>
+      </p>
+    {{/if}}
+    {{#if (if-equals this.formType "profile")}}
+      <Common::Profile @onProfileUpdate={{action 'profileUpdate'}} />
+    {{/if}}
+  </Ui::Modal>
+{{/if}}
