@@ -18,6 +18,24 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  onNavAction(type) {
+    switch (type) {
+      case 'loginRegister':
+        this.openModal();
+        break;
+      case 'logout':
+        this.logoutUser();
+        break;
+      case 'createPost':
+        this.router.transitionTo('post.create');
+        break;
+      default:
+        this.openProfileModal();
+        break;
+    }
+  }
+
+  @action
   setAction(type) {
     this.formType = type;
     this.title = 'Join FreshBlogs';
@@ -36,7 +54,8 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  loadUser() {
+  onRegisterLoginDone() {
+    this.send('refreshHome');
     this.closeModal();
   }
 
@@ -46,9 +65,9 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  afterLogout() {
+  logoutUser() {
     this.auth.logout();
-    this.send('userLoggedOut');
+    this.send('refreshHome');
   }
 
   @action

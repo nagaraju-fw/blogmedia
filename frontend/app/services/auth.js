@@ -50,7 +50,8 @@ export default class AuthService extends Service {
     this.currentUser = user;
   }
 
-  #setCookie(token) {
-    document.cookie = '__freshblog_session=' + token;
+  #setCookie() {
+    document.cookie =
+      '__freshblog_session=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }

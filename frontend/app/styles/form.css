@@ -49,6 +49,8 @@
 
 .tr-form .form-action {
   padding: 10px 0px;
+  display: flex;
+  justify-content: end;
 }
 
 .btn {

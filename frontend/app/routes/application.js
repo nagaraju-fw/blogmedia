@@ -25,11 +25,11 @@ export default class ApplicationRoute extends Route {
         .then((res) => res.json())
         .then((res) => {
           this.auth.setUser(res.user);
-          this.router.transitionTo('home', res.user.username);
         });
+    } else {
+      this.auth.setUser(null);
+      this.router.transitionTo('application');
     }
-
-    return null;
   }
 
   setupController(controller, model) {
@@ -37,7 +37,7 @@ export default class ApplicationRoute extends Route {
   }
 
   @action
-  userLoggedOut() {
+  refreshHome() {
     this.refresh();
   }
 }

@@ -6,6 +6,7 @@
         {{#if this.auth.currentUser}}
           <li class="profile-menu">
             <span class='material-symbols-outlined'>account_circle</span>
+            <span>{{this.auth.currentUser.name}}</span>
             <Ui::Popup>
               <ul role="listbox">
                 <li role="button">Change Password</li>
@@ -13,16 +14,22 @@
               </ul>
             </Ui::Popup>
           </li>
-          {{!-- <li>
-            <button title="logout" type='button' class='profile-btn btn btn-flat' {{on 'click' (fn this.onNavAction 'logout') }}>
-              <span class='material-symbols-outlined'>logout</span>
+          <li>
+            <button
+              type='button'
+              id="write-btn"
+              class='btn btn-flat'
+              {{on 'click' (fn this.onNavAction 'createPost')}}
+            >
+              <span>Write Post</span>
             </button>
-          </li> --}}
+          </li>
         {{else}}
           <li>
             <button
               type='button'
-              class='get-started-btn btn btn-flat'
+              id="get-started-btn"
+              class='btn btn-flat'
               {{on 'click' (fn this.onNavAction 'loginRegister')}}
             >
               Get Started

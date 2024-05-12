@@ -7,16 +7,6 @@ export default class CommonHeaderComponent extends Component {
 
   @action
   onNavAction(type) {
-    switch (type) {
-      case 'loginRegister':
-        this.args.openModalAction('loginRegister');
-        break;
-      case 'logout':
-        this.args.onLogout();
-        break;
-      default:
-        this.args.openProfileAction();
-        break;
-    }
+    this.args.onNavAction(type);
   }
 }

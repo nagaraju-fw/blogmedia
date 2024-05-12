@@ -1,15 +1,9 @@
 {{page-title 'Home'}}
-<main>
-  <div class='content-wrapper'>
-    <section>
-      posts
-      {{! Main posts / user posts }}
-    </section>
-    <aside>
-      home
-      {{! Reading list }}
-      {{! people following & followers }}
-    </aside>
-  </div>
-</main>
+{{#if this.auth.currentUser}}
+  User view
+  model length {{@model.length}}
+{{else}}
+  Common view
+  model length {{@model.length}}
+{{/if}}
 {{outlet}}

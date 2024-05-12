@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class UserModel extends Model {
   @attr('string') name;
@@ -9,4 +9,6 @@ export default class UserModel extends Model {
   @attr('string') password;
   @attr('date') createdAt;
   @attr('date') updatedAt;
+
+  @hasMany('post') post;
 }

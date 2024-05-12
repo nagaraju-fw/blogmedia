@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :posts do
+    resources :comments
+  end
   post 'auth/login'
   post 'auth/validate'
   resources :users do
