@@ -1,9 +1,10 @@
 import config from 'ui/config/environment';
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
 export default class AuthService extends Service {
   @tracked currentUser;
+  @service store;
 
   constructor() {
     super(...arguments);
@@ -32,8 +33,8 @@ export default class AuthService extends Service {
   }
 
   logout() {
-    this.setUser(null);
     this.#setCookie('');
+    this.setUser(null);
   }
 
   validateToken(token) {

@@ -22,6 +22,7 @@ export default class PostNewComponent extends Component {
   @tracked postObject;
 
   currentPost;
+  currentUser;
 
   get initialValues() {
     return {
@@ -34,7 +35,22 @@ export default class PostNewComponent extends Component {
 
   constructor() {
     super(...arguments);
-    this.postObject = EmberObject.create(this.initialValues);
+
+    if (this.args.post) {
+      this.postObject = EmberObject.create({
+        title: { value: this.args.post.title, error: '' },
+        content: { value: htmlSafe(this.args.post.content), error: '' },
+        published: { value: this.args.post.published, error: '' },
+        user_id: { value: this.args.post.user_id, error: '' },
+      });
+    } else {
+      this.postObject = EmberObject.create(this.initialValues);
+    }
+
+    this.setFormValid();
+    const user = this.store.findRecord('user', this.auth.currentUser.id);
+    this.currentUser =
+      user || this.store.createRecord('user', this.auth.currentUser);
   }
 
   @action
@@ -66,34 +82,14 @@ export default class PostNewComponent extends Component {
   createPost(event) {
     this.errorMessage = null;
     event.preventDefault();
-    const currentUser = this.auth.currentUser;
-    this.currentPost = this.store.createRecord('post', {
-      title: this.postObject.title.value,
-      content: this.postObject.content.value.string,
-      published: 0,
-      user: this.store.createRecord('user', currentUser),
-    });
-    this.currentPost.save().then((resp) => {
-      if (resp.id) {
-        this.args.onCreatePost();
-      }
-    });
+    this.#saveUpdateRecord(0);
   }
 
   @action
-  publishPost() {
-    const currentUser = this.auth.currentUser;
-    this.currentPost = this.store.createRecord('post', {
-      title: this.postObject.title.value,
-      content: this.postObject.content.value.string,
-      published: 1,
-      user: this.store.createRecord('user', currentUser),
-    });
-    this.currentPost.save().then((resp) => {
-      if (resp.id) {
-        this.args.onCreatePost();
-      }
-    });
+  publishPost(event) {
+    this.errorMessage = null;
+    event.preventDefault();
+    this.#saveUpdateRecord(1);
   }
 
   setFormValid() {
@@ -101,5 +97,32 @@ export default class PostNewComponent extends Component {
       return this.postObject[field].value && !this.postObject[field].error;
     });
     this.formInvalid = isValid ? null : true;
+  }
+
+  async #saveUpdateRecord(published) {
+    if (this.args.post) {
+      this.currentPost = await this.store.findRecord('post', this.args.post.id);
+
+      this.currentPost.set('title', this.postObject.get('title').value);
+      this.currentPost.set(
+        'content',
+        this.postObject.get('content').value.string
+      );
+      this.currentPost.set('published', published);
+      this.currentPost.set('user', this.currentUser);
+    } else {
+      this.currentPost = await this.store.createRecord('post', {
+        title: this.postObject.title.value,
+        content: this.postObject.content.value.string,
+        published: published,
+        user: this.currentUser,
+      });
+    }
+
+    this.currentPost.save().then((resp) => {
+      if (resp.id) {
+        this.args.onCreatePost();
+      }
+    });
   }
 }

@@ -5,11 +5,11 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id]
-      posts = Post.where("user_id = ? and published = 1", params[:user_id])
+      posts = Post.includes(:user).where("user_id = ? and published = 1", params[:user_id]).order('created_at DESC')
       render json: { posts: posts }
     else
       limit = params[:limit]
-      posts = Post.where("published=1").order('created_at DESC')
+      posts = Post.includes(:user).where("published=1").order('created_at ASC')
       if limit
         posts = posts.limit(10)
       end
@@ -27,23 +27,33 @@ class PostsController < ApplicationController
   end
 
   def show
-    if post?
-      render json: {post: @post}
+    if @post
+      render json: { post: @post }
     else
-      render json: {post: null, error: "Invalid Post id"}
+      render json: { post: null, error: "Invalid Post id" }
     end
   end
 
   def update
+    post = Post.find(params[:id])
+    post.update(post_params)
+    render json: post
   end
 
   def destroy
+    post = Post.find(params[:id])
+    if post.destroy
+      render json: { deleted: true }
+    else
+      render json: { errors: post.errors.full_messages }
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.includes(:user).find(params[:id])
     end
 
     def post_params

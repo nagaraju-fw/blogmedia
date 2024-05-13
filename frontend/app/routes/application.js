@@ -38,6 +38,7 @@ export default class ApplicationRoute extends Route {
 
   @action
   refreshHome() {
-    this.refresh();
+    // this.refresh();
+    window.location.href = '/';
   }
 }

@@ -1,9 +1,8 @@
 {{page-title 'Home'}}
-{{#if this.auth.currentUser}}
-  User view
-  model length {{@model.length}}
-{{else}}
-  Common view
-  model length {{@model.length}}
-{{/if}}
-{{outlet}}
+
+<article>
+  <Post::ListContainer  />
+</article>
+<aside>
+  <Topics />
+</aside>

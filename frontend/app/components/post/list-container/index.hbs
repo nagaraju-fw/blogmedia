@@ -1,0 +1,24 @@
+<div {{did-insert this.fetchPosts}} class='posts-list'>
+  {{#each this.posts as |post|}}
+    <div class='posts-list-item'>
+
+      <div class='posts-user-info'>
+        <span class='material-symbols-outlined'>account_circle</span>
+        <span>
+          <span class='post-author'>Created By: <b>{{post.user.name}}</b></span>
+          <span class='post-created-date'>Posted on:
+            {{format-date post.created_at}}</span>
+        </span>
+      </div>
+      <h3>
+        <LinkTo @route='post' @model={{post}} @replace={{true}}>
+          {{post.title}}
+        </LinkTo>
+      </h3>
+      <p>{{html-safe post.content}}</p>
+    </div>
+    <br />
+  {{else}}
+    No posts found
+  {{/each}}
+</div>

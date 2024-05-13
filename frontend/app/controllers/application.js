@@ -27,7 +27,7 @@ export default class ApplicationController extends Controller {
         this.logoutUser();
         break;
       case 'createPost':
-        this.router.transitionTo('post.create');
+        this.router.transitionTo('posts.create');
         break;
       default:
         this.openProfileModal();

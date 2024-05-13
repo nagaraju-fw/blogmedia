@@ -9,7 +9,6 @@
             <span>{{this.auth.currentUser.name}}</span>
             <Ui::Popup>
               <ul role="listbox">
-                <li role="button">Change Password</li>
                 <li {{on 'click' (fn this.onNavAction 'logout')}} role="button">Logout</li>
               </ul>
             </Ui::Popup>

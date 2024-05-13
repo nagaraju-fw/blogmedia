@@ -8,5 +8,6 @@ export default class PostCreateController extends Controller {
   @action
   createPost(payload) {
     console.log(payload);
+    this.router.transitionTo('application');
   }
 }
