@@ -233,6 +233,13 @@ main > .content-wrapper {
 main > .content-wrapper > article {
   display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
+}
+main > .content-wrapper > article > ul {
+  padding-top: 20px;
+  li {
+    text-decoration: underline;
+  }
 }
 main > .content-wrapper > aside {
   min-width: 250px;
@@ -244,7 +251,7 @@ main > .content-wrapper > aside {
   justify-content: center;
 }
 .posts-list {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-right: 50px;
   display: flex;
   flex-direction: column;

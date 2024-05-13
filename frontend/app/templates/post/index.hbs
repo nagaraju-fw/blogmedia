@@ -12,10 +12,22 @@
         {{format-date @model.created_at}}</p>
     </div>
 
-    <div class='posts-action'>
-        <span class='material-symbols-outlined' title="Edit Post" role="button" {{on 'click' (fn this.editPost @model)}}>edit</span>
-        <span class='material-symbols-outlined' title="Delete Post" role="button" {{on 'click' (fn this.deletePost @model)}}>delete</span>
-    </div>
+    {{#if this.auth.currentUser}}
+      <div class='posts-action'>
+        <span
+          class='material-symbols-outlined'
+          title='Edit Post'
+          role='button'
+          {{on 'click' (fn this.editPost @model)}}
+        >edit</span>
+        <span
+          class='material-symbols-outlined'
+          title='Delete Post'
+          role='button'
+          {{on 'click' (fn this.deletePost @model)}}
+        >delete</span>
+      </div>
+    {{/if}}
 
     {{#if @model.published}}
       <p>The post is already published</p>

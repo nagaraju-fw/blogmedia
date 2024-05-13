@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class PostViewController extends Controller {
   @service router;
+  @service('auth') auth;
 
   @action
   publishPost(post) {
