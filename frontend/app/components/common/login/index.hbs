@@ -12,7 +12,7 @@
     <Input
       id='login-email'
       name='email'
-      placeholder='Enter Email'
+      placeholder={{t "form.enter_email"}}
       @type='email'
       @value={{this.loginData.email.value}}
       required
@@ -24,7 +24,7 @@
     <Input
       id='login-password'
       name='password'
-      placeholder='Enter Password'
+      placeholder={{t "form.password.enter_password"}}
       @type='password'
       @value={{this.loginData.password.value}}
       required
@@ -38,6 +38,6 @@
       {{on 'click' this.reset}}
       class='btn btn-action'
     >Reset</button>
-    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>Submit</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>{{t "common.submit"}}</button>
   </div>
 </form>

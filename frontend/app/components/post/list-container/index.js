@@ -16,9 +16,10 @@ export default class PostListContainerComponent extends Component {
       posts$ = this.store.query('post', {
         user_id: this.auth.currentUser.id,
         limit: 10,
+        async: true
       });
     } else {
-      posts$ = this.store.findAll('post', { include: 'user' });
+      posts$ = this.store.findAll('post', { async: true });
     }
 
     posts$.then((posts) => {

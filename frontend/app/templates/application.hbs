@@ -22,23 +22,23 @@
     {{#if (if-equals this.formType 'login')}}
       <Common::Login @onLoginSuccess={{action 'onRegisterLoginDone'}} />
       <p class='tr-account-status'>
-        <span>No Account?</span>
+        <span>{{t "login.no_account"}}</span>
         <button
           type='button'
           class='btn btn-flat modal-link'
           {{on 'click' (fn this.setAction 'register')}}
-        >Create One</button>
+        >{{t "login.create_account"}}</button>
       </p>
     {{/if}}
     {{#if (if-equals this.formType 'register')}}
       <Common::Register @onRegisterDone={{action 'onRegisterLoginDone'}} />
       <p class='tr-account-status'>
-        <span>Already have an account?</span>
+        <span>{{t "login.already_have_account"}}</span>
         <button
           type='button'
           class='btn btn-flat modal-link'
           {{on 'click' (fn this.setAction 'login')}}
-        >Sign In</button>
+        >{{t "login.sign_in"}}</button>
       </p>
     {{/if}}
     {{#if (if-equals this.formType 'profile')}}

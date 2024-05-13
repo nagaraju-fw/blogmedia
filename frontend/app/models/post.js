@@ -8,5 +8,5 @@ export default class PostModel extends Model {
   @attr('date') created_at;
   @attr('date') updated_at;
 
-  @belongsTo('user') user;
+  @belongsTo('user', { async: true }) user;
 }

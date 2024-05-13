@@ -5,8 +5,8 @@
       <div class='posts-user-info'>
         <span class='material-symbols-outlined'>account_circle</span>
         <span>
-          <span class='post-author'>Created By: <b>{{post.user.name}}</b></span>
-          <span class='post-created-date'>Posted on:
+          <span class='post-author'>{{t "post.author"}}<b>{{post.user.name}}</b></span>
+          <span class='post-created-date'>{{t "post.posted_on"}}
             {{format-date post.created_at}}</span>
         </span>
       </div>
@@ -19,6 +19,6 @@
     </div>
     <br />
   {{else}}
-    No posts found
+    {{t "post.no_posts_found"}}
   {{/each}}
 </div>

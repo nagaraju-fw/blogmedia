@@ -12,7 +12,7 @@
     <Input
       id='register-name'
       name='name'
-      placeholder='Enter FullName'
+      placeholder={{t 'form.enter_fullname'}}
       @type='text'
       @value={{this.profileData.name.value}}
       required
@@ -27,7 +27,7 @@
     <Input
       id='register-dob'
       name='dob'
-      placeholder='Enter DOB'
+      placeholder={{t 'form.enter_dob'}}
       @type='date'
       @value={{this.profileData.dob.value}}
       required
@@ -41,13 +41,13 @@
     <select
       id='register-gender'
       name='gender'
-      placeholder='Choose Gender'
+      placeholder={{t 'form.enter_gender'}}
       value={{this.profileData.gender.value}}
       required
       autocomplete="off"
       {{on 'change' this.updateGender}}
     >
-      <option value=''>Select Gender</option>
+      <option value=''>{{t "form.enter_gender"}}</option>
       {{#each this.genderOptions as |gender|}}
         <option value={{gender.id}}>{{gender.value}}</option>
       {{/each}}
@@ -60,7 +60,7 @@
       type='button'
       {{on 'click' this.reset}}
       class='btn btn-action'
-    >Reset</button>
-    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>Submit</button>
+    >{{t "form.reset"}}</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>{{t "form.submit"}}</button>
   </div>
 </form>

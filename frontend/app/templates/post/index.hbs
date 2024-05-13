@@ -7,8 +7,8 @@
   </div>
   <div class='post-view-details'>
     <div class='posts-details'>
-      <h3 class='post-author'>Created By: <b>{{@model.user.name}}</b></h3>
-      <p class='post-created-date'>Posted on:
+      <h3 class='post-author'>{{t "post.author"}}: <b>{{@model.user.name}}</b></h3>
+      <p class='post-created-date'>{{t "post.posted_on"}}:
         {{format-date @model.created_at}}</p>
     </div>
 
@@ -16,28 +16,28 @@
       <div class='posts-action'>
         <span
           class='material-symbols-outlined'
-          title='Edit Post'
+          title={{t "post.edit"}}
           role='button'
           {{on 'click' (fn this.editPost @model)}}
-        >edit</span>
+        >{{t "common.edit"}}</span>
         <span
           class='material-symbols-outlined'
-          title='Delete Post'
+          title={{t "post.delete"}}
           role='button'
           {{on 'click' (fn this.deletePost @model)}}
-        >delete</span>
+        >{{t "common.delete"}}</span>
       </div>
     {{/if}}
 
     {{#if @model.published}}
-      <p>The post is already published</p>
+      <p>{{t "post.post_published_message"}}</p>
     {{else}}
-      <p>The post is in draft mode, Click here to submit</p>
+      <p>{{t "post.draft_post_message"}}</p>
       <button
         type='button'
         class='btn btn-primary'
         {{on 'click' (fn this.publishPost @model)}}
-      >Publish</button>
+      >{{t "common.publish"}}</button>
     {{/if}}
   </div>
 </div>

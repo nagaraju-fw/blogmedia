@@ -5,7 +5,7 @@
   <Input
     id='input-password'
     name='password'
-    placeholder='Enter Password'
+    placeholder={{t "form.password.enter_password"}}
     @type='password'
     required
     {{on 'keyup' this.updatePassword}}
@@ -25,7 +25,7 @@
   <Input
     id='input-confirm-password'
     name='confirmPassword'
-    placeholder='Re-enter Password'
+    placeholder={{t "form.password.reenter_password"}}
     @type='password'
     required
     {{on 'keyup' this.updatePassword}}

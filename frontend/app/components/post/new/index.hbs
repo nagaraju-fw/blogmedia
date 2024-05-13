@@ -9,7 +9,7 @@
     <Input
       id='post-title'
       name='title'
-      placeholder='Enter Title'
+      placeholder={{t "form.enter_title"}}
       @type='text'
       @value={{this.postObject.title.value}}
       required
@@ -30,9 +30,9 @@
       type='button'
       {{on 'click' this.reset}}
       class='btn btn-action'
-    >Reset</button>
-    <button type='button' class='btn btn-primary' disabled={{this.formInvalid}} {{on 'click' this.createPost}} >Save as Draft</button>
-    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}} {{on 'click' this.publishPost}} >Publish Post</button>
+    >{{t "form.reset"}}</button>
+    <button type='button' class='btn btn-primary' disabled={{this.formInvalid}} {{on 'click' this.createPost}} >{{t "form.save_as_draft"}}</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}} {{on 'click' this.publishPost}} >{{t "form.publish_post"}}</button>
   </div>
 
 </form>

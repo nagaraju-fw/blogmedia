@@ -1,6 +1,6 @@
 <header>
   <div class='content-wrapper'>
-    <a id='tr-logo' href='/' title='FreshBlogs, blogs for tech'>FreshBlogs</a>
+    <a id='tr-logo' href='/' title={{t 'common.appDesc'}}>{{t 'common.appTitle'}}</a>
     <nav>
       <ul>
         {{#if this.auth.currentUser}}
@@ -9,7 +9,7 @@
             <span>{{this.auth.currentUser.name}}</span>
             <Ui::Popup>
               <ul role="listbox">
-                <li {{on 'click' (fn this.onNavAction 'logout')}} role="button">Logout</li>
+                <li {{on 'click' (fn this.onNavAction 'logout')}} role="button">{{t "common.logout"}}</li>
               </ul>
             </Ui::Popup>
           </li>
@@ -20,7 +20,7 @@
               class='btn btn-flat'
               {{on 'click' (fn this.onNavAction 'createPost')}}
             >
-              <span>Write Post</span>
+              <span>{{t "post.write_post"}}</span>
             </button>
           </li>
         {{else}}
@@ -31,7 +31,7 @@
               class='btn btn-flat'
               {{on 'click' (fn this.onNavAction 'loginRegister')}}
             >
-              Get Started
+              {{t "common.get_started"}}
             </button>
           </li>
         {{/if}}
