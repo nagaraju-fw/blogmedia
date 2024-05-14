@@ -12,6 +12,14 @@
 <div {{did-insert this.fetchPosts}} class='posts-list'>
   {{#each this.posts as |post|}}
     <div class='posts-list-item'>
+
+      <h3>
+        <LinkTo @route='post' @model={{post}} @replace={{true}}>
+          {{post.title}}
+        </LinkTo>
+      </h3>
+      <p>{{html-safe post.content}}</p>
+
       <div class='posts-user-info'>
         <span class='material-symbols-outlined'>account_circle</span>
         <span>
@@ -20,12 +28,6 @@
             {{format-date post.created_at}}</span>
         </span>
       </div>
-      <h3>
-        <LinkTo @route='post' @model={{post}} @replace={{true}}>
-          {{post.title}}
-        </LinkTo>
-      </h3>
-      <p>{{html-safe post.content}}</p>
     </div>
     <br />
   {{else}}

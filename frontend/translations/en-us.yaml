@@ -22,6 +22,8 @@ post:
   draft_post_message: The post is in draft mode, Click here to submit
   post_published_message: The post is already published
   published_on: Published on
+  published: Published
+  add: Add Post
 login:
   no_account: No Account?
   create_account: Create One

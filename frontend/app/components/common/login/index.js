@@ -42,9 +42,18 @@ export default class CommonLoginComponent extends Component {
   validateRequiredFields(id) {
     const setValue = (id) => {
       const value = this.loginData.get(id).value;
+
+      let errorMsg = '';
+      if (!value) {
+        errorMsg = 'Required Input';
+      }
+      if (id === 'email' && !this.#validateEmail(value)) {
+        errorMsg = 'Invalid Email';
+      }
+
       this.loginData.set(id, {
         value: value,
-        error: !value ? 'Required Input' : '',
+        error: errorMsg,
       });
     };
     if (id) {
@@ -64,7 +73,7 @@ export default class CommonLoginComponent extends Component {
 
   setFormValid() {
     const isValid = Object.keys(this.loginData).every((field) => {
-      return this.loginData[field].value;
+      return this.loginData[field].value && !this.loginData[field].error;
     });
     this.formInvalid = isValid ? null : true;
   }
@@ -80,5 +89,11 @@ export default class CommonLoginComponent extends Component {
     } else {
       this.errorMessage = result.error || null;
     }
+  }
+
+  #validateEmail(email) {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
   }
 }

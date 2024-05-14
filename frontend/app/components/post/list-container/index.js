@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { A } from '@ember/array';
 
 export default class PostListContainerComponent extends Component {
   @service('auth') auth;

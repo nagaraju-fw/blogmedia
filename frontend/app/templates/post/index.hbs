@@ -13,7 +13,7 @@
     </div>
 
     {{#if @model.published}}
-      <p>{{t "post.published_on"}} {{format-date @model.updated_at}}</p>
+      {{!-- <p class="published">{{t "post.published"}}</p> --}}
     {{else}}
       <p>{{t "post.draft_post_message"}}</p>
       <button

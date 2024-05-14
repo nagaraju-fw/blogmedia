@@ -8,7 +8,7 @@
   class='fb-form form-fit login-form'
   novalidate
 >
-  <div class='form-field {{if this.loginData.name.error "error" ""}}'>
+  <div class='form-field {{if this.loginData.email.error "error" ""}}'>
     <Input
       id='login-email'
       name='email'
@@ -20,7 +20,7 @@
     />
   </div>
 
-  <div class='form-field {{if this.loginData.name.error "error" ""}}'>
+  <div class='form-field {{if this.loginData.password.error "error" ""}}'>
     <Input
       id='login-password'
       name='password'
