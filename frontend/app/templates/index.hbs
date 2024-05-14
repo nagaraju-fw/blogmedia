@@ -1,7 +1,13 @@
 {{page-title 'Home'}}
 
 <article>
+  <Post::ListContainer  />
+</article>
+<aside>
+  <Topics />
+</aside>
 
+{{!--
   {{#if this.auth.currentUser}}
     <ul>
       <li>Created By You</li>
@@ -11,9 +17,4 @@
       <li>Recent Posts</li>
     </ul>
   {{/if}}
-
-  <Post::ListContainer  />
-</article>
-<aside>
-  <Topics />
-</aside>
+--}}

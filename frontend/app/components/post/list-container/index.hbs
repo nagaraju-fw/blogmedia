@@ -1,11 +1,21 @@
+<div class="tabs">
+  <ul>
+    {{#each this.tabs as |tab|}}
+      {{!-- template-lint-disable no-invalid-interactive --}}
+      <li {{on 'click' (fn this.onClickTab tab.key)}} class={{if (if-equals this.activeTab tab.key) 'active'}}>{{t tab.value}}</li>
+    {{/each}}
+  </ul>
+</div>
+
+
+
 <div {{did-insert this.fetchPosts}} class='posts-list'>
   {{#each this.posts as |post|}}
     <div class='posts-list-item'>
-
       <div class='posts-user-info'>
         <span class='material-symbols-outlined'>account_circle</span>
         <span>
-          <span class='post-author'>{{t "post.author"}}<b>{{post.user.name}}</b></span>
+          <span class='post-author'>{{t "post.author"}}: <b>{{post.user.name}}</b></span>
           <span class='post-created-date'>{{t "post.posted_on"}}
             {{format-date post.created_at}}</span>
         </span>

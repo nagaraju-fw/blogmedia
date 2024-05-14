@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id]
-      posts = Post.includes(:user).where("user_id = ? and published = 1", params[:user_id]).order('created_at DESC')
+      posts = Post.includes(:user).where("user_id = ? and published = ?", params[:user_id], params[:published]).order('created_at DESC')
       render json: { posts: posts }
     else
       limit = params[:limit]

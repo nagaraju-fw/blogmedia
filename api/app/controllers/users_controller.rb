@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, except: [:create, :checkUserNameExists]
+  before_action :authorize, except: [:create, :show, :checkUserNameExists]
 
   def checkUserNameExists
     username = User.where("username = ?", params[:username]).first

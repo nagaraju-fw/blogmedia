@@ -12,6 +12,17 @@
         {{format-date @model.created_at}}</p>
     </div>
 
+    {{#if @model.published}}
+      <p>{{t "post.published_on"}} {{format-date @model.updated_at}}</p>
+    {{else}}
+      <p>{{t "post.draft_post_message"}}</p>
+      <button
+        type='button'
+        class='btn btn-primary'
+        {{on 'click' (fn this.publishPost @model)}}
+      >{{t "common.publish"}}</button>
+    {{/if}}
+
     {{#if this.auth.currentUser}}
       <div class='posts-action'>
         <span
@@ -27,17 +38,6 @@
           {{on 'click' (fn this.deletePost @model)}}
         >{{t "common.delete"}}</span>
       </div>
-    {{/if}}
-
-    {{#if @model.published}}
-      <p>{{t "post.post_published_message"}}</p>
-    {{else}}
-      <p>{{t "post.draft_post_message"}}</p>
-      <button
-        type='button'
-        class='btn btn-primary'
-        {{on 'click' (fn this.publishPost @model)}}
-      >{{t "common.publish"}}</button>
     {{/if}}
   </div>
 </div>

@@ -7,6 +7,9 @@ common:
   edit: Edit
   delete: Delete
   publish: Publish
+  your_posts: Your Posts
+  drafts: Drafts
+  recently_published: Recently Published
 topics:
   no_topics_found: No Topics found
 post:
@@ -18,6 +21,7 @@ post:
   delete: Delete Post
   draft_post_message: The post is in draft mode, Click here to submit
   post_published_message: The post is already published
+  published_on: Published on
 login:
   no_account: No Account?
   create_account: Create One

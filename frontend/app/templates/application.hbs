@@ -21,7 +21,7 @@
   <Ui::Modal @title={{this.title}} @onCloseModal={{action 'closeModal'}}>
     {{#if (if-equals this.formType 'login')}}
       <Common::Login @onLoginSuccess={{action 'onRegisterLoginDone'}} />
-      <p class='tr-account-status'>
+      <p class='fb-account-status'>
         <span>{{t "login.no_account"}}</span>
         <button
           type='button'
@@ -32,7 +32,7 @@
     {{/if}}
     {{#if (if-equals this.formType 'register')}}
       <Common::Register @onRegisterDone={{action 'onRegisterLoginDone'}} />
-      <p class='tr-account-status'>
+      <p class='fb-account-status'>
         <span>{{t "login.already_have_account"}}</span>
         <button
           type='button'

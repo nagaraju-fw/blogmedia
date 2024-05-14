@@ -1,20 +1,20 @@
 
-.tr-form label {
+.fb-form label {
   font-size: 1rem;
   line-height: 1.5rem;
   color: var(--text-primary-color);
 }
 
-.tr-form input,
-.tr-form select  {
+.fb-form input,
+.fb-form select  {
   font-size: 1rem;
   line-height: 3rem;
   border: 1px solid var(--white-200);
   border-radius: 4px;
 }
 
-.tr-form.form-fit input,
-.tr-form.form-fit select {
+.fb-form.form-fit input,
+.fb-form.form-fit select {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -22,7 +22,7 @@
   margin: 0px 0px 10px;
 }
 
-.tr-form select {
+.fb-form select {
   height: 3rem;
 }
 
@@ -31,7 +31,7 @@
   border-color: var(--tertiary-color);
 }
 
-.tr-form .password-with-help {
+.fb-form .password-with-help {
   position: relative;
   &.error {
     &:hover .password-checker-result {
@@ -47,7 +47,7 @@
   }
 }
 
-.tr-form .form-action {
+.fb-form .form-action {
   padding: 10px 0px;
   display: flex;
   justify-content: end;

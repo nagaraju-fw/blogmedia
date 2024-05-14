@@ -87,7 +87,7 @@ header nav > ul > li {
   bottom: 0;
   left: 0;
   right: 0;
-  background:rgb(189, 189, 189, 0.25);
+  background:rgba(189, 189, 189, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +95,7 @@ header nav > ul > li {
 
 .modal {
   background: var(--white-50);
-  box-shadow: 0px 0px 18px 3px var(--white-200);
+  box-shadow: 0px 0px 18px 3px rgb(220, 220, 220, 0.1);
   border-radius: 4px;
 }
 
@@ -154,7 +154,7 @@ header nav > ul > li {
   padding: 0px 10px;
 }
 
-#tr-logo {
+#fb-logo {
   color: var(--text-primary-color);
   font-size: 1.2rem;
   text-transform: capitalize;
@@ -164,7 +164,7 @@ header nav > ul > li {
   min-width: 400px;
 }
 
-.tr-account-status {
+.fb-account-status {
   text-align: center;
   padding: 10px 0;
 }
@@ -313,7 +313,6 @@ main > .content-wrapper > aside {
   display: flex;
   flex-direction: row;
   height: calc(100vh - 100px);
-  overflow: auto;
   flex: 1 1 auto;
 }
 .post-view h2 {
@@ -324,6 +323,7 @@ main > .content-wrapper > aside {
 }
 .post-view .post-view-content {
   padding-right: 20px;
+  overflow: auto;
   flex: 1 1 auto;
 }
 .post-view .post-view-details {
@@ -337,4 +337,20 @@ main > .content-wrapper > aside {
 }
 .post-view .posts-details {
   padding: 10px 0;
+}
+.post-view .posts-action {
+  margin-top: 10px;
+}
+.tabs ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--white-200);
+}
+.tabs ul li {
+  padding: 15px 10px;
+  cursor: pointer;
+}
+.tabs ul li.active {
+  background: var(--white-100);
 }
