@@ -1,0 +1,38 @@
+<h2>{{t "post.add"}}</h2>
+
+<form
+  action='#'
+  class='fb-form form-fit post-form'
+  novalidate
+>
+  <div class='form-field {{if this.postObject.title.error "error" ""}}'>
+    <Input
+      id='post-title'
+      name='title'
+      placeholder={{t "form.enter_title"}}
+      @type='text'
+      @value={{this.postObject.title.value}}
+      required
+      autocomplete='off'
+      {{on 'keyup' (fn this.validateForm 'title')}}
+    />
+  </div>
+
+  <FroalaEditor
+    @options={{this.editorOptions}}
+    @content={{this.postObject.content.value}}
+    @update={{fn (mut this.postObject.content.value)}}
+  />
+
+
+  <div class='form-action'>
+    <button
+      type='button'
+      {{on 'click' this.reset}}
+      class='btn btn-action'
+    >{{t "form.reset"}}</button>
+    <button type='button' class='btn btn-primary' disabled={{this.formInvalid}} {{on 'click' this.createPost}} >{{t "form.save_as_draft"}}</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}} {{on 'click' this.publishPost}} >{{t "form.publish_post"}}</button>
+  </div>
+
+</form>

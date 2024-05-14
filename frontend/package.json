@@ -11,6 +11,7 @@
     "test": "tests"
   },
   "scripts": {
+    "ember": "ember",
     "build": "ember build --environment=production",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
@@ -23,7 +24,9 @@
     "test:ember": "ember test"
   },
   "devDependencies": {
+    "@cloudcreativity/ember-quill": "^1.0.0-alpha.2",
     "@ember/optional-features": "^2.0.0",
+    "@ember/render-modifiers": "^1.0.2",
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
@@ -41,6 +44,8 @@
     "ember-data": "~3.28.6",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
+    "ember-froala-editor": "^3.2.6",
+    "ember-intl": "^5.5.0",
     "ember-load-initializers": "^2.1.2",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-page-title": "^6.2.2",

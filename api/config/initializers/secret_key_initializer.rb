@@ -1,0 +1,1 @@
+ENV['APP_SECRET_KEY'] = 'UseThisToHashAndCreateToken!'

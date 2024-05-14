@@ -1,0 +1,40 @@
+<div
+  class='form-field password-with-help
+    {{if this.formObj.password.error "error" ""}}'
+>
+  <Input
+    id='input-password'
+    name='password'
+    placeholder={{t "form.password.enter_password"}}
+    @type='password'
+    required
+    {{on 'keyup' this.updatePassword}}
+  />
+  {{! template-lint-disable no-action }}
+  <Common::PasswordChecker::ValidatorList
+    @id='password'
+    @password={{this.formObj.password.value}}
+    @onPasswordValid={{action 'setFormStatus'}}
+  />
+</div>
+
+<div
+  class='form-field password-with-help
+    {{if this.formObj.confirmPassword.error "error" ""}}'
+>
+  <Input
+    id='input-confirm-password'
+    name='confirmPassword'
+    placeholder={{t "form.password.reenter_password"}}
+    @type='password'
+    required
+    {{on 'keyup' this.updatePassword}}
+  />
+  {{! template-lint-disable no-action }}
+  <Common::PasswordChecker::ValidatorList
+    @id='confirmPassword'
+    @password={{this.formObj.confirmPassword.value}}
+    @onPasswordValid={{action 'setFormStatus'}}
+  />
+</div>
+

@@ -1,0 +1,43 @@
+{{#if this.errorMessage}}
+  <div class='form-error-message'>{{this.errorMessage}}</div>
+{{/if}}
+
+<form
+  {{on 'submit' this.save}}
+  action='#'
+  class='fb-form form-fit login-form'
+  novalidate
+>
+  <div class='form-field {{if this.loginData.email.error "error" ""}}'>
+    <Input
+      id='login-email'
+      name='email'
+      placeholder={{t "form.enter_email"}}
+      @type='email'
+      @value={{this.loginData.email.value}}
+      required
+      {{on 'keyup' (fn this.validateRequiredFields 'email' )}}
+    />
+  </div>
+
+  <div class='form-field {{if this.loginData.password.error "error" ""}}'>
+    <Input
+      id='login-password'
+      name='password'
+      placeholder={{t "form.password.enter_password"}}
+      @type='password'
+      @value={{this.loginData.password.value}}
+      required
+      {{on 'keyup' (fn this.validateRequiredFields 'password' )}}
+    />
+  </div>
+
+  <div class='form-action'>
+    <button
+      type='button'
+      {{on 'click' this.reset}}
+      class='btn btn-action'
+    >Reset</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>{{t "common.submit"}}</button>
+  </div>
+</form>

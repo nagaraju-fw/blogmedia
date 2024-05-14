@@ -1,9 +1,46 @@
-{{page-title "Ui"}}
+{{page-title 'FreshBlogs'}}
+{{! template-lint-disable no-action }}
+<Common::Header
+  @onNavAction={{action 'onNavAction'}}
+  {{!-- @onLogout={{action 'afterLogout'}}
+  @openModalAction={{action 'openModal'}}
+  @openProfileAction={{action 'openProfileModal'}} --}}
+/>
 
-{{!-- The following component displays Ember's default welcome message. --}}
-{{!-- <WelcomePage /> --}}
+<main>
+  <div class='content-wrapper'>
+    {{outlet}}
+  </div>
+</main>
 
-<h1>Welcome to ember, Docker!</h1>
-{{!-- Feel free to remove this! --}}
+<footer></footer>
 
-{{outlet}}
+{{#if this.showModal}}
+  <Ui::Modal @title={{this.title}} @onCloseModal={{action 'closeModal'}}>
+    {{#if (if-equals this.formType 'login')}}
+      <Common::Login @onLoginSuccess={{action 'onRegisterLoginDone'}} />
+      <p class='fb-account-status'>
+        <span>{{t "login.no_account"}}</span>
+        <button
+          type='button'
+          class='btn btn-flat modal-link'
+          {{on 'click' (fn this.setAction 'register')}}
+        >{{t "login.create_account"}}</button>
+      </p>
+    {{/if}}
+    {{#if (if-equals this.formType 'register')}}
+      <Common::Register @onRegisterDone={{action 'onRegisterLoginDone'}} />
+      <p class='fb-account-status'>
+        <span>{{t "login.already_have_account"}}</span>
+        <button
+          type='button'
+          class='btn btn-flat modal-link'
+          {{on 'click' (fn this.setAction 'login')}}
+        >{{t "login.sign_in"}}</button>
+      </p>
+    {{/if}}
+    {{#if (if-equals this.formType 'profile')}}
+      <Common::Profile @onProfileUpdate={{action 'profileUpdate'}} />
+    {{/if}}
+  </Ui::Modal>
+{{/if}}

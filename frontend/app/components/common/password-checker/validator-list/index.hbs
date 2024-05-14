@@ -1,0 +1,12 @@
+<div class='password-checker-result' {{did-update this.validatePassword @password}}>
+  <h3>{{t "form.password.validaton_title"}}</h3>
+
+  {{#if this.password_validation_list}}
+      <ul class='password-validations'>
+        {{#each this.password_validation_list key="regex" as |r|}}
+          <li class={{if r.valid 'list-item' 'list-item password-invalid'}}>{{r.text}}</li>
+        {{/each}}
+      </ul>
+  {{/if}}
+
+</div>

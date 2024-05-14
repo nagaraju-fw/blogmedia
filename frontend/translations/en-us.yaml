@@ -1,0 +1,49 @@
+common:
+  appTitle: FreshBlogs
+  appDesc: FreshBlogs, blogs for tech
+  logout: Logout
+  get_started: Get Started
+  submit: Submit
+  edit: Edit
+  delete: Delete
+  publish: Publish
+  your_posts: Your Posts
+  drafts: Drafts
+  recently_published: Recently Published
+topics:
+  no_topics_found: No Topics found
+post:
+  write_post: Write Post
+  author: Author
+  posted_on: Posted on
+  no_posts_found: No posts found
+  edit: Edit Post
+  delete: Delete Post
+  draft_post_message: The post is in draft mode, Click here to submit
+  post_published_message: The post is already published
+  published_on: Published on
+  published: Published
+  add: Add Post
+login:
+  no_account: No Account?
+  create_account: Create One
+  already_have_account: Already have an account?
+  sign_in: Sign In
+form:
+  password:
+    validaton_title: Password should be
+    enter_password: Enter Password
+    reenter_password: Re-enter Password
+  enter_fullname: Enter FullName
+  enter_dob: Enter DOB
+  enter_gender: Select Gender
+  enter_email: Enter Email
+  enter_username: Enter Username
+  enter_title: Enter Title
+  save_as_draft: Save as Draft
+  publish_post: Publish Post
+  reset: Reset
+  submit: Submit
+
+
+

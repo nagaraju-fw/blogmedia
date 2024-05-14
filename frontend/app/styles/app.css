@@ -1,0 +1,357 @@
+:root {
+  --white-50: #ffffff;
+  --white-100: #efefef;
+  --white-200: #dcdcdc;
+  --white-300: #bdbdbd;
+  --white-400: #989898;
+  --white-500: #7c7c7c;
+  --white-600: #656565;
+  --white-700: #525252;
+  --white-800: #464646;
+  --white-900: #3d3d3d;
+  --white-950: #292929;
+
+  --primary-color: var(--white-50);
+  --secondary-color: #4ecaf4;
+  --secondary-color-dark: #267995;
+  --tertiary-color: #ff5b5b;
+  --text-primary-color: var(--white-950);
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  font: 14px Arial, Helvetica, sans-serif;
+  line-height: 1.2rem;
+  background-color: var(--white-50);
+  color: var(--text-primary-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.material-symbols-outlined {
+  color: var(--white-600);
+  cursor: pointer;
+  font-size: 2rem;
+
+  &:hover {
+    color: var(--text-primary-color);
+  }
+}
+
+header {
+  height: 75px;
+  padding: 0px 50px;
+  border-bottom: 1px solid var(--white-200);
+  box-shadow: 0px -2px 5px var(--white-100);
+  flex: 0 0 auto;
+}
+
+header .content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+header nav > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+footer {
+  height: 30px;
+  background: var(--white-100);
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background:rgba(189, 189, 189, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: var(--white-50);
+  box-shadow: 0px 0px 18px 3px rgb(220, 220, 220, 0.1);
+  border-radius: 4px;
+}
+
+.modal-header {
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 10px;
+  position: relative;
+  .modal-title {
+    font-size: 1.2rem;
+  }
+  .btn-close-modal {
+    position: absolute;
+    right: 15px;
+  }
+}
+
+.modal-footer {
+  padding: 10px;
+}
+
+.modal-content {
+  padding: 10px;
+}
+
+#get-started-btn {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#write-btn {
+  margin-left: 20px;
+  min-width: 100px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  background: var(--white-950);
+  color: var(--white-50);
+}
+
+#write-btn:hover {
+  background: var(--white-900);
+}
+
+.login-form,
+.register-form  {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.login-form .btn {
+  padding: 0px 10px;
+}
+
+#fb-logo {
+  color: var(--text-primary-color);
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+#account-modal {
+  min-width: 400px;
+}
+
+.fb-account-status {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.modal-link {
+  cursor: pointer;
+  color: var(--secondary-color);
+  &:hover {
+    color: var(--secondary-color-dark);
+  }
+}
+
+.profile-menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.profile-menu:hover .popup {
+  display: block;
+}
+.profile-menu li {
+  padding: 10px;
+  line-height: 1.2rem;
+}
+.profile-menu li:hover {
+  background: var(--white-100);
+  cursor: pointer;
+}
+
+.popup {
+  min-width: 140px;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: var(--primary-color);
+  border: 1px solid var(--white-200);
+  border-radius: 4px;
+}
+
+.posts-container {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.posts-container h2 {
+  line-height: 3rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: calc(100vh - 106px);
+}
+
+main > .content-wrapper {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0 10px;
+}
+main > .content-wrapper > article {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+main > .content-wrapper > article > ul {
+  padding-top: 20px;
+  li {
+    text-decoration: underline;
+  }
+}
+main > .content-wrapper > aside {
+  min-width: 250px;
+  height: 100%;
+  border-left: 1px solid var(--white-300);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.posts-list {
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 200px);
+  overflow: auto;
+}
+.posts-list-item {
+  display: flex;
+  flex-direction: column;
+}
+.posts-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0;
+}
+.posts-user-info .post-author {
+  font-size: 1rem;
+}
+.posts-user-info .material-symbols-outlined {
+  font-size: 1.4rem;
+}
+.post-created-date {
+  font-size: 0.8rem;
+  color: var(--white-500);
+}
+.posts-list-item {
+  border-bottom: 1px solid var(--white-200);
+  position: relative;
+}
+.posts-list-item h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+}
+.posts-list-item h3 a {
+  color: var(--white-950);
+}
+.posts-list-item > p {
+  max-height: 60px;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--white-800);
+}
+
+.post-list-actions {
+  position: absolute;
+  top: 25%;
+  right: 10px;
+}
+.post-list-actions li {
+  display: inline-block;
+}
+.post-view {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 100px);
+  flex: 1 1 auto;
+}
+.post-view h2 {
+  font-size: 2rem;
+  line-height: 3rem;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+.post-view .post-view-content {
+  padding-right: 20px;
+  overflow: auto;
+  flex: 1 1 auto;
+}
+.post-view .post-view-details {
+  min-width: 250px;
+  max-width: 250px;
+  padding: 10px 20px;
+  border-left: 1px solid var(--white-200);
+}
+.post-view .post-view-details button {
+  margin: 10px 0;
+}
+.post-view .posts-details {
+  padding: 10px 0;
+}
+.post-view .posts-action {
+  margin-top: 10px;
+}
+.tabs ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid var(--white-200);
+}
+.tabs ul li {
+  padding: 15px 10px;
+  cursor: pointer;
+}
+.tabs ul li.active {
+  background: var(--white-100);
+}

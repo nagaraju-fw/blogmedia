@@ -43,6 +43,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    base64 (0.2.0)
+    bcrypt (3.1.20)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -56,6 +58,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
+    jwt (2.8.1)
+      base64
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -71,6 +75,7 @@ GEM
     marcel (1.0.4)
     method_source (1.1.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.6)
     minitest (5.22.3)
     msgpack (1.7.2)
     mysql2 (0.5.6)
@@ -84,11 +89,14 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.1)
-    nokogiri (1.13.10-aarch64-linux)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     puma (3.12.6)
     racc (1.7.3)
     rack (2.2.9)
+    rack-cors (1.0.6)
+      rack (>= 1.6.0)
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (5.2.8.1)
@@ -145,11 +153,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
+  jwt (~> 2.8, >= 2.8.1)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
+  rack-cors (~> 1.0.4)
   rails (~> 5.2.8, >= 5.2.8.1)
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -1,0 +1,96 @@
+{{#if this.errorMessage}}
+  <div class='form-error-message'>{{this.errorMessage}}</div>
+{{/if}}
+
+<form
+  {{on 'submit' this.save}}
+  action='#'
+  class='fb-form form-fit register-form'
+  novalidate
+>
+  <div class='form-field {{if this.registerData.name.error "error" ""}}'>
+    <Input
+      id='register-name'
+      name='name'
+      placeholder={{t 'form.enter_fullname'}}
+      @type='text'
+      @value={{this.registerData.name.value}}
+      required
+      autocomplete="off"
+      {{on 'keyup' (fn this.validateRequiredFields 'name' )}}
+    />
+    {{!-- <p class='form-error-message'>{{this.registerData.name.error}}</p> --}}
+  </div>
+  <div class='form-field {{if this.registerData.username.error "error" ""}}'>
+    <Input
+      id='register-username'
+      name='username'
+      placeholder={{t "form.enter_username"}}
+      @type='text'
+      @value={{this.registerData.username.value}}
+      required
+      autocomplete="off"
+      {{on 'keyup' this.checkUsername}}
+    />
+    <p class='form-error-message'>{{this.registerData.username.error}}</p>
+  </div>
+  <div class='form-field {{if this.registerData.email.error "error" ""}}'>
+    <Input
+      id='register-email'
+      name='email'
+      placeholder={{t "form.enter_email"}}
+      @type='email'
+      @value={{this.registerData.email.value}}
+      required
+      autocomplete="off"
+      {{on 'keyup' (fn this.validateRequiredFields 'email' )}}
+    />
+    {{!-- <p class='form-error-message'>{{this.registerData.email.error}}</p> --}}
+  </div>
+  {{! template-lint-disable no-action }}
+  <Common::PasswordChecker
+    @onPasswordValidate={{action 'checkAndSetPassword'}}
+  />
+  <p class='form-error-message'>{{this.registerData.password.error}}</p>
+
+  <div class='form-field {{if this.registerData.dob.error "error" ""}}'>
+    <Input
+      id='register-dob'
+      name='dob'
+      placeholder={{t 'form.enter_dob'}}
+      @type='date'
+      @value={{this.registerData.dob.value}}
+      required
+      autocomplete="off"
+      {{on 'keyup' (fn this.validateRequiredFields 'dob' )}}
+    />
+    {{!-- <p class='form-error-message'>{{this.registerData.dob.error}}</p> --}}
+  </div>
+
+  <div class='form-field {{if this.registerData.gender.error "error" ""}}'>
+    <select
+      id='register-gender'
+      name='gender'
+      placeholder={{t 'form.enter_gender'}}
+      value={{this.registerData.gender.value}}
+      required
+      autocomplete="off"
+      {{on 'change' this.updateGender}}
+    >
+      <option value=''>{{t 'form.enter_gender'}}</option>
+      {{#each this.genderOptions as |gender|}}
+        <option value={{gender.id}}>{{gender.value}}</option>
+      {{/each}}
+    </select>
+    {{!-- <p class='form-error-message'>{{this.registerData.gender.error}}</p> --}}
+  </div>
+
+  <div class='form-action'>
+    <button
+      type='button'
+      {{on 'click' this.reset}}
+      class='btn btn-action'
+    >{{t "form.reset"}}</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>{{t "form.submit"}}</button>
+  </div>
+</form>

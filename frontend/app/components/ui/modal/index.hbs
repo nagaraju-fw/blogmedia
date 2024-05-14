@@ -1,0 +1,18 @@
+{{! template-lint-disable no-action }}
+<div class='modal-wrapper' role='dialog'>
+  <div class='modal' id='account-modal'>
+    <div class='modal-header'>
+      <span class='modal-title'>{{@title}}</span>
+      <button
+        type='button'
+        class='btn btn-icon btn-close-modal'
+        {{on 'click' this.closeModal}}
+      >
+        <span class='material-symbols-outlined'>close</span>
+      </button>
+    </div>
+    <div class='modal-content'>
+      {{yield}}
+    </div>
+  </div>
+</div>

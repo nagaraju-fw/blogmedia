@@ -1,0 +1,66 @@
+{{#if this.errorMessage}}
+  <div class='form-error-message'>{{this.errorMessage}}</div>
+{{/if}}
+
+<form
+  {{on 'submit' this.save}}
+  action='#'
+  class='fb-form form-fit register-form'
+  novalidate
+>
+  <div class='form-field {{if this.profileData.name.error "error" ""}}'>
+    <Input
+      id='register-name'
+      name='name'
+      placeholder={{t 'form.enter_fullname'}}
+      @type='text'
+      @value={{this.profileData.name.value}}
+      required
+      autocomplete="off"
+      {{on 'keyup' (fn this.validateRequiredFields 'name' )}}
+    />
+    {{!-- <p class='form-error-message'>{{this.profileData.name.error}}</p> --}}
+  </div>
+
+
+  <div class='form-field {{if this.profileData.dob.error "error" ""}}'>
+    <Input
+      id='register-dob'
+      name='dob'
+      placeholder={{t 'form.enter_dob'}}
+      @type='date'
+      @value={{this.profileData.dob.value}}
+      required
+      autocomplete="off"
+      {{on 'keyup' (fn this.validateRequiredFields 'dob' )}}
+    />
+    {{!-- <p class='form-error-message'>{{this.profileData.dob.error}}</p> --}}
+  </div>
+
+  <div class='form-field {{if this.profileData.gender.error "error" ""}}'>
+    <select
+      id='register-gender'
+      name='gender'
+      placeholder={{t 'form.enter_gender'}}
+      value={{this.profileData.gender.value}}
+      required
+      autocomplete="off"
+      {{on 'change' this.updateGender}}
+    >
+      <option value=''>{{t "form.enter_gender"}}</option>
+      {{#each this.genderOptions as |gender|}}
+        <option value={{gender.id}}>{{gender.value}}</option>
+      {{/each}}
+    </select>
+    {{!-- <p class='form-error-message'>{{this.profileData.gender.error}}</p> --}}
+  </div>
+
+  <div class='form-action'>
+    <button
+      type='button'
+      {{on 'click' this.reset}}
+      class='btn btn-action'
+    >{{t "form.reset"}}</button>
+    <button type='submit' class='btn btn-primary' disabled={{this.formInvalid}}>{{t "form.submit"}}</button>
+  </div>
+</form>

@@ -1,0 +1,43 @@
+<div class='post-view'>
+  <div class='post-view-content'>
+    <h2>{{@model.title}}</h2>
+    <div class='post-content'>
+      {{html-safe @model.content}}
+    </div>
+  </div>
+  <div class='post-view-details'>
+    <div class='posts-details'>
+      <h3 class='post-author'>{{t "post.author"}}: <b>{{@model.user.name}}</b></h3>
+      <p class='post-created-date'>{{t "post.posted_on"}}:
+        {{format-date @model.created_at}}</p>
+    </div>
+
+    {{#if @model.published}}
+      {{!-- <p class="published">{{t "post.published"}}</p> --}}
+    {{else}}
+      <p>{{t "post.draft_post_message"}}</p>
+      <button
+        type='button'
+        class='btn btn-primary'
+        {{on 'click' (fn this.publishPost @model)}}
+      >{{t "common.publish"}}</button>
+    {{/if}}
+
+    {{#if this.auth.currentUser}}
+      <div class='posts-action'>
+        <span
+          class='material-symbols-outlined'
+          title={{t "post.edit"}}
+          role='button'
+          {{on 'click' (fn this.editPost @model)}}
+        >{{t "common.edit"}}</span>
+        <span
+          class='material-symbols-outlined'
+          title={{t "post.delete"}}
+          role='button'
+          {{on 'click' (fn this.deletePost @model)}}
+        >{{t "common.delete"}}</span>
+      </div>
+    {{/if}}
+  </div>
+</div>
